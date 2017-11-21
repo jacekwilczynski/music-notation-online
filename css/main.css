@@ -1,8 +1,6 @@
-* {
-  box-sizing: border-box; }
-
 .container {
-  padding-top: 50px; }
+  padding-top: 80px;
+  overflow: hidden; }
 
 .staff {
   position: relative; }
@@ -50,14 +48,14 @@
   .barline.single {
     margin-right: 30px; }
   .barline.double {
-    margin-right: 33px; }
+    margin-right: 34.5px; }
     .barline.double::after {
       border: 3px invisible black;
       border-left-style: solid;
       height: 82px;
       content: '';
       display: inline-block;
-      margin-left: 3px;
+      margin-left: 4.5px;
       width: 3px; }
   .barline.final::after {
     border: 3px invisible black;
@@ -65,7 +63,7 @@
     height: 82px;
     content: '';
     display: inline-block;
-    margin-left: 3px;
+    margin-left: 4.5px;
     border-left-width: 10px;
     background: white;
     width: 100vw; }

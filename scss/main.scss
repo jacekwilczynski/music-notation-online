@@ -1,13 +1,15 @@
 $image-path: '../images/';
+
+$note-values: (quarter: 1, eighth: .5);
+
 $line-color: #bbb;
 $line-spacing: 20px;
 $line-thickness: $line-spacing / 10;
-$note-values: (quarter: 1, eighth: .5);
 $quarter-width: 120px;
 $staff-height: $line-spacing * 4;
 $barline-thickness: $line-thickness * 1.5;
 $barline-margin: $quarter-width / 4;
-$double-barline-spacing: $barline-thickness;
+$double-barline-spacing: $barline-thickness * 1.5;
 
 @mixin barline {
 	border: $barline-thickness invisible black;
@@ -21,13 +23,9 @@ $double-barline-spacing: $barline-thickness;
 	margin-left: $double-barline-spacing;
 }
 
-* {
-	box-sizing: border-box;
-	// outline: 1px solid red;
-}
-
 .container {
-	padding-top: 50px;
+	padding-top: $staff-height;
+	overflow: hidden;
 }
 
 .staff {
