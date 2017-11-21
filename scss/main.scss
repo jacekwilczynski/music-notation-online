@@ -1,0 +1,113 @@
+$image-path: '../images/';
+$line-color: #bbb;
+$line-spacing: 20px;
+$line-thickness: $line-spacing / 10;
+$note-values: (quarter: 1, eighth: .5);
+$quarter-width: 120px;
+$staff-height: $line-spacing * 4;
+$barline-thickness: $line-thickness * 1.5;
+$barline-margin: $quarter-width / 4;
+$double-barline-spacing: $barline-thickness;
+
+@mixin barline {
+	border: $barline-thickness invisible black;
+	border-left-style: solid;
+	height: $staff-height + 2px;
+}
+
+@mixin second-barline {
+	content: '';
+	display: inline-block;
+	margin-left: $double-barline-spacing;
+}
+
+* {
+	box-sizing: border-box;
+	// outline: 1px solid red;
+}
+
+.container {
+	padding-top: 50px;
+}
+
+.staff {
+	position: relative;
+}
+
+.line {
+	border-top: $line-thickness solid $line-color;
+	height: $line-spacing;
+}
+
+.staff-contents {
+	position: absolute;
+	margin: 0 30px;
+	white-space: nowrap;
+}
+
+.staff-element {
+	background: no-repeat left/contain;
+	display: inline-block;
+	height: $staff-height;
+}
+
+@each $key in map-keys($note-values) {
+	.#{$key} {
+		width: $quarter-width * map-get($note-values, $key);
+		@each $type in note, rest {
+			&.#{$type} {
+				background-image: url(#{$image-path}#{$key}-#{$type}.png);
+			}
+		}
+	}
+}
+
+.quarter.rest {
+	height: $staff-height * .8;
+	transform: translateY(-$staff-height * .12);
+}
+
+.eighth.rest {
+	height: $staff-height * .51;
+	transform: translateY(-$staff-height * .23);
+}
+
+.barline {
+	@include barline;
+
+	&.single {
+		margin-right: $barline-margin;
+	}
+
+	&.double {
+		margin-right: $barline-margin + $double-barline-spacing;
+		
+		&::after {
+			@include barline;
+			@include second-barline;
+			width: $line-thickness * 1.5;
+		}
+	}
+
+	&.final {
+		&::after {
+			@include barline;
+			@include second-barline;
+			border-left-width: 10px;
+			background: white;
+			width: 100vw;
+		}
+	}
+}
+
+@for $n from 1 through 5 {
+	.s-#{$n} {
+		transform: translateY(-($line-spacing * ($n - 1)));
+	}
+}
+
+@for $n from 1 through 4 {
+	.l-#{$n} {
+		transform: translateY(-($line-spacing * ($n - 1.5)));
+	}
+}
