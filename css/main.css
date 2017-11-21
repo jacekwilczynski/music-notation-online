@@ -42,29 +42,31 @@
   transform: translateY(-18.4px); }
 
 .barline {
-  border: 3px invisible black;
+  border: 2px invisible black;
+  border-left-width: 2px;
   border-left-style: solid;
   height: 82px; }
   .barline.single {
     margin-right: 30px; }
   .barline.double {
-    margin-right: 34.5px; }
+    margin-right: 34px; }
     .barline.double::after {
-      border: 3px invisible black;
+      border: 2px invisible black;
+      border-left-width: 2px;
       border-left-style: solid;
       height: 82px;
       content: '';
       display: inline-block;
-      margin-left: 4.5px;
-      width: 3px; }
+      margin-left: 4px; }
   .barline.final::after {
-    border: 3px invisible black;
+    border: 2px invisible black;
+    border-left-width: 2px;
     border-left-style: solid;
     height: 82px;
     content: '';
     display: inline-block;
-    margin-left: 4.5px;
-    border-left-width: 10px;
+    margin-left: 4px;
+    border-left-width: 6px;
     background: white;
     width: 100vw; }
 

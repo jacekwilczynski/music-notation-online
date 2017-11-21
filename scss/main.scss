@@ -2,19 +2,22 @@ $image-path: '../images/';
 
 $note-values: (quarter: 1, eighth: .5);
 
+$scale: 2;
+
 $line-color: #bbb;
-$line-spacing: 20px;
+$line-spacing: $scale * 10px;
 $line-thickness: $line-spacing / 10;
-$quarter-width: 120px;
+$quarter-width: $line-spacing * 6;
 $staff-height: $line-spacing * 4;
-$barline-thickness: $line-thickness * 1.5;
+$barline-thickness: $line-thickness;
 $barline-margin: $quarter-width / 4;
-$double-barline-spacing: $barline-thickness * 1.5;
+$double-barline-spacing: $line-thickness * 2;
 
 @mixin barline {
-	border: $barline-thickness invisible black;
+	border: $line-thickness invisible black;
+	border-left-width: $barline-thickness;
 	border-left-style: solid;
-	height: $staff-height + 2px;
+	height: $staff-height + $line-spacing / 10;
 }
 
 @mixin second-barline {
@@ -83,7 +86,6 @@ $double-barline-spacing: $barline-thickness * 1.5;
 		&::after {
 			@include barline;
 			@include second-barline;
-			width: $line-thickness * 1.5;
 		}
 	}
 
@@ -91,7 +93,7 @@ $double-barline-spacing: $barline-thickness * 1.5;
 		&::after {
 			@include barline;
 			@include second-barline;
-			border-left-width: 10px;
+			border-left-width: $barline-thickness * 3;
 			background: white;
 			width: 100vw;
 		}
